@@ -1,4 +1,8 @@
-<a href="#" (click)="onSelected()" style="text-decoration: none;">
+<a style="cursor: pointer;"
+   style="text-decoration: none" 
+   [routerLink]="[index]"
+   routerLinkActive="active">
+   
   <div class="card mb-3">
     <div class="row g-0">
       <div class="col-md-4">
@@ -6,6 +10,7 @@
           [src]="recipe.imagePath"
           alt="{{ recipe.name }}"
           class="img-fluid"
+          style="margin-top: 50px;"
         />
       </div>
       <div class="col-md-8">
@@ -17,5 +22,3 @@
     </div>
   </div>
 </a>
-
-
