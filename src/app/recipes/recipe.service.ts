@@ -26,6 +26,12 @@ export class RecipeService {
       'https://purepng.com/public/uploads/large/purepng.com-hot-dogfood-salad-hotdog-sausage-sandwich-ketchup-9415246184411sj9v.png',
       [new Ingredient('Sausages', 1), new Ingredient('Sliced Bun', 1)]
     ),
+    new Recipe(
+      'Rice & Curry',
+      'Sri Lankan Rice and Curry Considered the national dish of the country, Sri Lankan rice and curry consists of steaming hot and spicy chicken curry tasty food',
+      'https://th.bing.com/th/id/R.70b9d56d2971301e39b9ee70ed760399?rik=RefAeFCbJRwszA&riu=http%3a%2f%2fstatic.takeaway.com%2fimages%2fcats%2fm51.png%3fOrder%2bIndian%2bfood&ehk=I5rifjuJ9or0GXo68vvx1x83HLCTVwCH%2fOlceZoLyLQ%3d&risl=&pid=ImgRaw&r=0',
+      [new Ingredient('Rice', 1), new Ingredient('Chicken', 1)]
+    ),
   ];
 
   constructor(private slService: ShoppingListService) {}
