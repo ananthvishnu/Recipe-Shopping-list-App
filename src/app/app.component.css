@@ -1,7 +1,7 @@
 .universe{
-    height: 100%;
-    width: 100vw;
+    height: auto;
     background-image: url('https://static.spotapps.co/web/theshwack--com/custom/slide_6.jpg');
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
