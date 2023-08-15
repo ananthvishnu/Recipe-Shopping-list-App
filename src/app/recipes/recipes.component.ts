@@ -5,7 +5,7 @@ import { RecipeService } from './recipe.service';
   selector: 'app-recipes',
   templateUrl: './recipes.component.html',
   styleUrls: ['./recipes.component.css'],
-  providers: [RecipeService],
+  providers: [RecipeService],//? Provides the RecipeService to this component and its child components
 })
 export class RecipesComponent implements OnInit {
 

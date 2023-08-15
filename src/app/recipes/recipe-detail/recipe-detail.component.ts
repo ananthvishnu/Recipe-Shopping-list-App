@@ -8,8 +8,9 @@ import { ActivatedRoute, Params, Route, Router } from '@angular/router';
   styleUrls: ['./recipe-detail.component.css'],
 })
 export class RecipeDetailComponent implements OnInit {
-  recipe!: Recipe;
-  id?: number;
+  recipe!: Recipe;// The recipe that is currently being displayed
+  id?: number;  // The id of the currently selected recipe
+
 
   constructor(
     private recipeService: RecipeService,
@@ -18,12 +19,13 @@ export class RecipeDetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    // Subscribe to route parameters to get the recipe id
     this.route.params.subscribe((params: Params) => {
-      this.id = +params['id'];
-      this.recipe = this.recipeService.getRecipe(this.id);
+      this.id = +params['id'];// Extract the id from the parameters
+      this.recipe = this.recipeService.getRecipe(this.id); // Fetch the corresponding recipe
     });
   }
-
+  // Method to add the recipe's ingredients to the shopping list
   onAddToShoppingList() {
     this.recipeService.addIngredientsToShoppingList(this.recipe.ingredients);
   }
