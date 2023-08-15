@@ -10,7 +10,13 @@
           >
             Save
           </button>
-          <button type="button" class="btn btn-danger">Cancel</button>
+          <button
+            type="button"
+            class="btn btn-danger ms-2"
+            (click)="onCancel()"
+          >
+            Cancel
+          </button>
         </div>
       </div>
       <div class="row">
@@ -78,13 +84,19 @@
               />
             </div>
             <div class="col-2">
-              <button type="button" class="btn btn-danger">X</button>
+              <button type="button"
+                      class="btn btn-danger"
+                      (click)="onDeleteIngredient(i)">X</button>
             </div>
           </div>
           <hr />
           <div class="row">
             <div class="col-12">
-              <button type="button" class="btn btn-success">
+              <button
+                type="button"
+                class="btn btn-success"
+                (click)="onAddIngredient()"
+              >
                 Add Ingredient
               </button>
             </div>
