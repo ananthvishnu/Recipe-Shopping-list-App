@@ -20,23 +20,23 @@ export class RecipeListComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-  //? Subscribe to the recipesChanged event to receive updated recipe list.  
+    //? Subscribe to the recipesChanged event to receive updated recipe list.
     this.subscription = this.recipeService.recipesChanged.subscribe(
       (recipes: Recipe[]) => {
-        this.recipes = recipes;// Update the recipes array with new data.
+        this.recipes = recipes; //? Update the recipes array with new data.
       }
     );
-   // Initialize the recipes array with the initial list of recipes.
+    //? Initialize the recipes array with the initial list of recipes.
     this.recipes = this.recipeService.getRecipes();
   }
 
-  
-  // Navigate to the recipe creation page.
+  //? Navigate to the recipe creation page.
   onNewRecipe() {
     this.router.navigate(['new'], { relativeTo: this.route });
   }
 
   ngOnDestroy(): void {
+    //? Unsubscribe from the recipesChanged event to prevent memory leaks.
     this.subscription.unsubscribe();
   }
 }
