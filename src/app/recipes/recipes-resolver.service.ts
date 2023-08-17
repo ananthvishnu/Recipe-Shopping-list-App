@@ -15,17 +15,18 @@ export class RecipesResolverService implements Resolve<Recipe[]> {
     private recipeService: RecipeService
   ) {}
 
-  // This method is automatically called when the route is resolved
-  // It retrieves recipes either from the local service or from the server
+  //? This method is automatically called when the route is resolved
+  //? It retrieves recipes either from the local service or from the server
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-     // Get the recipes from the local service
+     //? Get the recipes from the local service
     const recipes = this.recipeService.getRecipes();
 
-// Check if there are no recipes in the local service
+//? Check if there are no recipes in the local service
     if (recipes.length === 0) {
-        // Fetch recipes from the server using the DataStorageService
+        //? Fetch recipes from the server using the DataStorageService
       return this.dataStorageService.fetchRecipes();
     } else {
+        //? Use the recipes from the local service
       return recipes;
     }
   }
