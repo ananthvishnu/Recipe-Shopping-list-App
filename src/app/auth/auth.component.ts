@@ -31,6 +31,7 @@ export class AuthComponent {
     let authObs: Observable<AuthResponseData>;
 
     this.isLoading = true;
+
     if (this.isLoginMode) {
       authObs = this.authService.login(email, password);
     } else {
@@ -40,7 +41,7 @@ export class AuthComponent {
       (resData) => {
         console.log(resData);
         this.isLoading = false;
-        this.router.navigate(['/recipes']);//programatical navigation
+        this.router.navigate(['/recipes']); //programatical navigation
       },
       (errorMessage) => {
         console.log(errorMessage);

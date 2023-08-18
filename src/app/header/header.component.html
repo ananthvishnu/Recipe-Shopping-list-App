@@ -1,38 +1,83 @@
 <nav class="navbar navbar-expand-lg navbar-black bg-warning">
-    <div class="container">
-      <a href="#" class="navbar-brand" style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif"><img src="../../favicon.ico" alt="" style="height: 40px; width: 40px;">Happy Meals</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <!-- <a class="nav-link" href="#" (click)="onSelect('recipe')">Recipes</a> -->
-            <a class="nav-link" routerLink="/recipes">Recipes</a>
+  <div class="container">
+    <a
+      href="#"
+      class="navbar-brand"
+      style="
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS',
+          sans-serif;
+      "
+      ><img
+        src="../../favicon.ico"
+        alt=""
+        style="height: 40px; width: 40px"
+      />Happy Meals</a
+    >
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav" >
+        <li class="nav-item" *ngIf="isAuthenticated">
+          <a class="nav-link" routerLink="/recipes">Recipes</a>
+        </li>
 
-          </li>
-          <li class="nav-item">
-            <!-- <a class="nav-link" href="#" (click)="onSelect('shopping-list')">Shopping List</a> -->
-            <a class="nav-link" routerLink="/shopping-list">Shopping List</a>
-          </li>
-          <li class="nav-item">
-            <!-- <a class="nav-link" href="#" (click)="onSelect('shopping-list')">Shopping List</a> -->
-            <a class="nav-link" routerLink="/auth">Authenticate</a>
-          </li>
-        </ul>
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle"  id="manageDropdown" role="button" data-bs-toggle="dropdown"
-              aria-expanded="false" style="cursor: pointer">
-              Manage
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="manageDropdown" appDropDown>
-              <li><a class="dropdown-item" style="cursor: pointer" (click)="onSaveData()">Save Data</a></li>
-              <li><a class="dropdown-item" style="cursor: pointer" (click)="onFetchData()">Fetch Data</a></li>
-            </ul>
-          </li>
-        </ul>
-      </div>
+        <li class="nav-item" *ngIf="!isAuthenticated">
+          <a class="nav-link" routerLink="/auth" >Authenticate</a>
+        </li>
+        
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/shopping-list">Shopping List</a>
+        </li>
+        
+      </ul>
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item" *ngIf="isAuthenticated">
+        <a class="nav-link" routerLink="/auth" (click)="onLogout()">LogOut</a>
+        </li>
+        <li class="nav-item dropdown" *ngIf="isAuthenticated">
+          <a
+            class="nav-link dropdown-toggle"
+            id="manageDropdown"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+            style="cursor: pointer"
+          >
+            Manage
+          </a>
+          <ul
+            class="dropdown-menu"
+            aria-labelledby="manageDropdown"
+            appDropDown
+          >
+            <li>
+              <a
+                class="dropdown-item"
+                style="cursor: pointer"
+                (click)="onSaveData()"
+                >Save Data</a
+              >
+            </li>
+            <li>
+              <a
+                class="dropdown-item"
+                style="cursor: pointer"
+                (click)="onFetchData()"
+                >Fetch Data</a
+              >
+            </li>
+          </ul>
+        </li>
+      </ul>
     </div>
-  </nav>
+  </div>
+</nav>
