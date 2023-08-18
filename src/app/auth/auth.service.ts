@@ -44,7 +44,7 @@ export class AuthService {
         })
       );
   }
-
+ //? Function to log in an existing user
   login(email: string, password: string) {
     return this.http
       .post<AuthResponseData>(
@@ -67,7 +67,7 @@ export class AuthService {
         })
       );
   }
-
+//? Function to automatically log in user if valid credentials are present in local storage
   autoLogin() {
     const userDataString: string | null = localStorage.getItem('userData');
     if (!userDataString) {
@@ -80,7 +80,7 @@ export class AuthService {
       _token: string;
       _tokenExpirationDate: string;
     } = JSON.parse(userDataString);
-  
+   //? Load the user data and set up auto-logout if necessary
     const loadedUser = new User(
       userData.email,
       userData.id,
@@ -96,10 +96,10 @@ export class AuthService {
       this.autoLogout(expirationDuration);
     }
   }
-  
+   //? Function to log the user out
   logout() {
-    const emptyUser: any = new User('', '', '', new Date()); // Create an empty User instance
-    this.user.next(emptyUser); // Set the BehaviorSubject to the empty User instance
+    const emptyUser: any = new User('', '', '', new Date()); //?Create an empty User instance
+    this.user.next(emptyUser); //? Set the BehaviorSubject to the empty User instance
     this.router.navigate(['/auth']);
     localStorage.removeItem('userData');
     if(this.tokenExpirationTimer) {
@@ -107,7 +107,7 @@ export class AuthService {
     }
     this.tokenExpirationTimer = null;
   }
-
+//? Function to set up auto-logout based on token expiration time
   autoLogout(expirationDuration: number) {
     console.log(expirationDuration);
     
@@ -115,6 +115,8 @@ export class AuthService {
       this.logout();
     }, expirationDuration);
   }
+
+  //? Function to handle user authentication after successful login/signup
   private handleAuthentication(
     email: string,
     userId: string,
@@ -128,6 +130,7 @@ export class AuthService {
     localStorage.setItem('userData', JSON.stringify(user));
   }
 
+    //? Function to handle errors during HTTP requests
   private handleError(errorRes: HttpErrorResponse) {
     let errorMessage: string = 'An unknown error occurred!';
     if (!errorRes.error || !errorRes.error.error) {

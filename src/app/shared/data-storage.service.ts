@@ -37,6 +37,7 @@ export class DataStorageService {
       )
       .pipe(
         map(recipes => {
+           //? Map the response data to handle potential missing ingredients array
           return recipes.map(recipe => {
             return {
               ...recipe,
@@ -45,6 +46,7 @@ export class DataStorageService {
           });
         }),
         tap(recipes => {
+        //? Update the RecipeService with the fetched recipes
           this.recipeService.setRecipes(recipes);
         })
       );

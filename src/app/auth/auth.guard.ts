@@ -14,6 +14,7 @@ export class AuthGuard implements CanActivate {
   constructor(private authService: AuthService,
               private router: Router) {}
 
+//? Function to guard routes based on user authentication status
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
@@ -21,11 +22,11 @@ export class AuthGuard implements CanActivate {
     return this.authService.user.pipe(
         take(1),
       map((user: any) => {
-        const isAuth = !!user;
+        const isAuth = !!user;//? Check if a user is authenticated
         if (isAuth){
-            return true;
+            return true;//? Allow access to the route
         }
-
+// ?Redirect to the authentication page if user is not authenticated
         return this.router.createUrlTree(['/auth'])
       }),
     //   tap(isAuth => {
